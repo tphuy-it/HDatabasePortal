@@ -1,0 +1,15 @@
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.csproj.AssemblyReference.cache
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.AssemblyInfoInputs.cache
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.AssemblyInfo.cs
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.csproj.CoreCompileInputs.cache
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\HDatabasePortal.Data.deps.json
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\HDatabasePortal.Data.runtimeconfig.json
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\HDatabasePortal.Data.runtimeconfig.dev.json
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\HDatabasePortal.Data.dll
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\ref\HDatabasePortal.Data.dll
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\bin\Debug\net5.0\HDatabasePortal.Data.pdb
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.dll
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\ref\HDatabasePortal.Data.dll
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.pdb
+D:\GitHub_Repository\HDatabasePortal\HDatabasePortal\HDatabasePortal.Data\obj\Debug\net5.0\HDatabasePortal.Data.genruntimeconfig.cache
