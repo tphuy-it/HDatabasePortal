@@ -10,6 +10,6 @@ namespace HDatabasePortal.Data.Entities.ThongTinCongDan
     {
         public string Ma { get; set; }
         public string Ten { get; set; }
-
+        public List<TinhTrangHonNhan_CongDan> DS_TinhTrangHonNhan_CongDan { get; set; }
     }
 }

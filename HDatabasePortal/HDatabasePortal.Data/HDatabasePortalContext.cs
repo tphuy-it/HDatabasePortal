@@ -65,6 +65,15 @@ namespace HDatabasePortal.Data
             modelBuilder.ApplyConfiguration(new DanhMuc_GioiTinh_Config());
             modelBuilder.ApplyConfiguration(new DanhMuc_QuanHe_Config());
             modelBuilder.ApplyConfiguration(new CongDan_Config());
+            modelBuilder.ApplyConfiguration(new DanhMuc_LoaiDiaChi_Config());
+            modelBuilder.ApplyConfiguration(new DanhMuc_LoaiTrangThai_Config());
+            modelBuilder.ApplyConfiguration(new DiaChi_CongDan_Config());
+            modelBuilder.ApplyConfiguration(new LoaiTrangThai_CongDan_Config());
+            modelBuilder.ApplyConfiguration(new NgheNghiep_CongDan_Config());
+            modelBuilder.ApplyConfiguration(new NguoiThan_Config());
+            modelBuilder.ApplyConfiguration(new QuocTich_CongDan_Config());
+            modelBuilder.ApplyConfiguration(new TinhTrangHonNhan_CongDan_Config());
+            modelBuilder.ApplyConfiguration(new TonGiao_CongDan_Config());
             //
             base.OnModelCreating(modelBuilder);
         }
@@ -107,6 +116,14 @@ namespace HDatabasePortal.Data
         public virtual DbSet<DanhMuc_GioiTinh> DanhMuc_GioiTinh { get; set; }
         public virtual DbSet<DanhMuc_QuanHe> DanhMuc_QuanHe { get; set; }
         public virtual DbSet<CongDan> CongDan { get; set; }
-
+        public virtual DbSet<DanhMuc_LoaiDiaChi> DanhMuc_LoaiDiaChi { get; set; }
+        public virtual DbSet<DanhMuc_LoaiTrangThai> DanhMuc_LoaiTrangThai { get; set; }
+        public virtual DbSet<DiaChi_CongDan> DiaChi_CongDan { get; set; }
+        public virtual DbSet<LoaiTrangThai_CongDan> LoaiTrangThai_CongDan { get; set; }
+        public virtual DbSet<NgheNghiep_CongDan> NgheNghiep_CongDan { get; set; }
+        public virtual DbSet<NguoiThan> NguoiThan { get; set; }
+        public virtual DbSet<QuocTich_CongDan> QuocTich_CongDan { get; set; }
+        public virtual DbSet<TinhTrangHonNhan_CongDan> TinhTrangHonNhan_CongDan { get; set; }
+        public virtual DbSet<TonGiao_CongDan> TonGiao_CongDan { get; set; }
     }
 }

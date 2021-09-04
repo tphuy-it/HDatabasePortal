@@ -34,8 +34,8 @@ namespace HDatabasePortal.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TenKhac")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.HasKey("Ma");
 
@@ -577,7 +577,8 @@ namespace HDatabasePortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SoDinhDanh")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -729,6 +730,16 @@ namespace HDatabasePortal.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("ChuHo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DanTocMa")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("DanToc_Ma")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
                     b.Property<int?>("GioiTinhMa")
                         .HasColumnType("int");
 
@@ -745,13 +756,6 @@ namespace HDatabasePortal.Data.Migrations
                     b.Property<DateTime?>("NgayThangNamSinh")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NgheNghiepCap5Ma")
-                        .HasColumnType("nvarchar(6)");
-
-                    b.Property<string>("NgheNghiepCap5_Ma")
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
-
                     b.Property<string>("SoChungMinhNhanDan")
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
@@ -766,9 +770,9 @@ namespace HDatabasePortal.Data.Migrations
                         .IsUnique()
                         .HasFilter("[AspNetUser_ID] IS NOT NULL");
 
-                    b.HasIndex("GioiTinhMa");
+                    b.HasIndex("DanTocMa");
 
-                    b.HasIndex("NgheNghiepCap5Ma");
+                    b.HasIndex("GioiTinhMa");
 
                     b.ToTable("CongDan");
                 });
@@ -785,6 +789,36 @@ namespace HDatabasePortal.Data.Migrations
                     b.HasKey("Ma");
 
                     b.ToTable("DanhMuc_GioiTinh");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiDiaChi", b =>
+                {
+                    b.Property<string>("Ma")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("Ten")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Ma");
+
+                    b.ToTable("DanhMuc_LoaiDiaChi");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiTrangThai", b =>
+                {
+                    b.Property<string>("Ma")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Ten")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Ma");
+
+                    b.ToTable("DanhMuc_LoaiTrangThai");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_QuanHe", b =>
@@ -815,6 +849,221 @@ namespace HDatabasePortal.Data.Migrations
                     b.HasKey("Ma");
 
                     b.ToTable("DanhMuc_TinhTrangHonNhan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DiaChi_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("XaPhuong_MaHanhChinh")
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<string>("LoaiDiaChi_Ma")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("DayDu")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SoNhaTenDuong")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "XaPhuong_MaHanhChinh", "LoaiDiaChi_Ma");
+
+                    b.HasIndex("LoaiDiaChi_Ma");
+
+                    b.HasIndex("XaPhuong_MaHanhChinh");
+
+                    b.ToTable("DiaChi_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.LoaiTrangThai_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("LoaiTrangThai_Ma")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MoTa")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "LoaiTrangThai_Ma");
+
+                    b.HasIndex("LoaiTrangThai_Ma");
+
+                    b.ToTable("LoaiTrangThai_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.NgheNghiep_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("NgheNghiepCap5_Ma")
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MoTa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "NgheNghiepCap5_Ma");
+
+                    b.HasIndex("NgheNghiepCap5_Ma");
+
+                    b.ToTable("NgheNghiep_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.NguoiThan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("QuanHe_Ma")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("ChuDem")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("ChungHo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ho")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MoTa")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SoChungMinhNhanDan")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("Ten")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("CongDan_SoDinhDanh", "QuanHe_Ma");
+
+                    b.HasIndex("QuanHe_Ma");
+
+                    b.ToTable("NguoiThan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.QuocTich_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("QuocGia_MaM49")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MoTa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "QuocGia_MaM49");
+
+                    b.HasIndex("QuocGia_MaM49");
+
+                    b.ToTable("QuocTich_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.TinhTrangHonNhan_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("TinhTrangHonNhan_Ma")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MoTa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "TinhTrangHonNhan_Ma");
+
+                    b.HasIndex("TinhTrangHonNhan_Ma");
+
+                    b.ToTable("TinhTrangHonNhan_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.TonGiao_CongDan", b =>
+                {
+                    b.Property<string>("CongDan_SoDinhDanh")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<int>("CacToChucTonGiaoChinh_ID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("CoChucVu")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HienTai")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MoTa")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("TuNgay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CongDan_SoDinhDanh", "CacToChucTonGiaoChinh_ID");
+
+                    b.HasIndex("CacToChucTonGiaoChinh_ID");
+
+                    b.ToTable("TonGiao_CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.TonGiao.DanhMuc_CacToChucTonGiaoChinh", b =>
@@ -1028,19 +1277,160 @@ namespace HDatabasePortal.Data.Migrations
                         .WithOne("CongDan")
                         .HasForeignKey("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "AspNetUser_ID");
 
+                    b.HasOne("HDatabasePortal.Data.Entities.DanToc.DanhMuc_DanToc", "DanToc")
+                        .WithMany("DS_CongDan")
+                        .HasForeignKey("DanTocMa");
+
                     b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_GioiTinh", "GioiTinh")
                         .WithMany("DS_CongDan")
                         .HasForeignKey("GioiTinhMa");
 
-                    b.HasOne("HDatabasePortal.Data.Entities.NgheNghiep.DanhMuc_NgheNghiepCap5", "NgheNghiepCap5")
-                        .WithMany()
-                        .HasForeignKey("NgheNghiepCap5Ma");
+                    b.Navigation("DanToc");
 
                     b.Navigation("GioiTinh");
 
-                    b.Navigation("NgheNghiepCap5");
-
                     b.Navigation("TaiKhoan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DiaChi_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_DiaChi")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiDiaChi", "LoaiDiaChi")
+                        .WithMany("DS_DiaChi_CongDan")
+                        .HasForeignKey("LoaiDiaChi_Ma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_XaPhuong", "XaPhuong")
+                        .WithMany("DS_DiaChi_CongDan")
+                        .HasForeignKey("XaPhuong_MaHanhChinh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("LoaiDiaChi");
+
+                    b.Navigation("XaPhuong");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.LoaiTrangThai_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_LoaiTrangThai")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiTrangThai", "LoaiTrangThai")
+                        .WithMany("DS_LoaiTrangThaiCongDan")
+                        .HasForeignKey("LoaiTrangThai_Ma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("LoaiTrangThai");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.NgheNghiep_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_NgheNghiep")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.NgheNghiep.DanhMuc_NgheNghiepCap5", "NgheNghiepCap5")
+                        .WithMany("DS_NgheNghiep_CongDan")
+                        .HasForeignKey("NgheNghiepCap5_Ma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("NgheNghiepCap5");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.NguoiThan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_NguoiThan")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_QuanHe", "QuanHe")
+                        .WithMany("DS_NguoiThan")
+                        .HasForeignKey("QuanHe_Ma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("QuanHe");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.QuocTich_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_QuocTich")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_QuocGia", "QuocGia")
+                        .WithMany("DS_QuocTich_CongDan")
+                        .HasForeignKey("QuocGia_MaM49")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("QuocGia");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.TinhTrangHonNhan_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_TinhTrangHonNhan")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_TinhTrangHonNhan", "TinhTrangHonNhan")
+                        .WithMany("DS_TinhTrangHonNhan_CongDan")
+                        .HasForeignKey("TinhTrangHonNhan_Ma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CongDan");
+
+                    b.Navigation("TinhTrangHonNhan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.TonGiao_CongDan", b =>
+                {
+                    b.HasOne("HDatabasePortal.Data.Entities.TonGiao.DanhMuc_CacToChucTonGiaoChinh", "CacToChucTonGiaoChinh")
+                        .WithMany("DS_TonGiao_CongDan")
+                        .HasForeignKey("CacToChucTonGiaoChinh_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", "CongDan")
+                        .WithMany("DS_TonGiao")
+                        .HasForeignKey("CongDan_SoDinhDanh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CacToChucTonGiaoChinh");
+
+                    b.Navigation("CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.TonGiao.DanhMuc_CacToChucTonGiaoChinh", b =>
@@ -1050,6 +1440,11 @@ namespace HDatabasePortal.Data.Migrations
                         .HasForeignKey("TonGiao_Ma");
 
                     b.Navigation("TonGiao");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.DanToc.DanhMuc_DanToc", b =>
+                {
+                    b.Navigation("DS_CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_CapQuanHuyen", b =>
@@ -1095,11 +1490,18 @@ namespace HDatabasePortal.Data.Migrations
             modelBuilder.Entity("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_QuocGia", b =>
                 {
                     b.Navigation("DS_KhuVucTinhThanhCap1");
+
+                    b.Navigation("DS_QuocTich_CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_TinhThanh", b =>
                 {
                     b.Navigation("DS_QuanHuyen");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.DiaPhuong.DanhMuc_XaPhuong", b =>
+                {
+                    b.Navigation("DS_DiaChi_CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.NgheNghiep.DanhMuc_NgheNghiepCap1", b =>
@@ -1122,14 +1524,61 @@ namespace HDatabasePortal.Data.Migrations
                     b.Navigation("DS_NgheNghiepCap5");
                 });
 
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.NgheNghiep.DanhMuc_NgheNghiepCap5", b =>
+                {
+                    b.Navigation("DS_NgheNghiep_CongDan");
+                });
+
             modelBuilder.Entity("HDatabasePortal.Data.Entities.NguoiDung.AspNetUser", b =>
                 {
                     b.Navigation("CongDan");
                 });
 
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.CongDan", b =>
+                {
+                    b.Navigation("DS_DiaChi");
+
+                    b.Navigation("DS_LoaiTrangThai");
+
+                    b.Navigation("DS_NgheNghiep");
+
+                    b.Navigation("DS_NguoiThan");
+
+                    b.Navigation("DS_QuocTich");
+
+                    b.Navigation("DS_TinhTrangHonNhan");
+
+                    b.Navigation("DS_TonGiao");
+                });
+
             modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_GioiTinh", b =>
                 {
                     b.Navigation("DS_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiDiaChi", b =>
+                {
+                    b.Navigation("DS_DiaChi_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_LoaiTrangThai", b =>
+                {
+                    b.Navigation("DS_LoaiTrangThaiCongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_QuanHe", b =>
+                {
+                    b.Navigation("DS_NguoiThan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.ThongTinCongDan.DanhMuc_TinhTrangHonNhan", b =>
+                {
+                    b.Navigation("DS_TinhTrangHonNhan_CongDan");
+                });
+
+            modelBuilder.Entity("HDatabasePortal.Data.Entities.TonGiao.DanhMuc_CacToChucTonGiaoChinh", b =>
+                {
+                    b.Navigation("DS_TonGiao_CongDan");
                 });
 
             modelBuilder.Entity("HDatabasePortal.Data.Entities.TonGiao.DanhMuc_TonGiao", b =>

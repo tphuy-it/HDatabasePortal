@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HDatabasePortal.Data.Entities.ThongTinCongDan;
 
 namespace HDatabasePortal.Data.Entities.DiaPhuong
 {
@@ -24,5 +25,6 @@ namespace HDatabasePortal.Data.Entities.DiaPhuong
         public string KhuVucQuocGia_MaM49 { get; set; }
         public DanhMuc_KhuVucQuocGia KhuVucQuocGia { get; set; }
         public List<DanhMuc_KhuVucTinhThanhCap1> DS_KhuVucTinhThanhCap1 { get; set; }
+        public List<QuocTich_CongDan> DS_QuocTich_CongDan { get; set; }
     }
 }

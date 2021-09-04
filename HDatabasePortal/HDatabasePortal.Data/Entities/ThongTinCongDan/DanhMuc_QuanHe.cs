@@ -10,5 +10,6 @@ namespace HDatabasePortal.Data.Entities.ThongTinCongDan
     {
         public string Ma { get; set; }
         public string Ten { get; set; }
+        public List<NguoiThan> DS_NguoiThan { get; set; }
     }
 }

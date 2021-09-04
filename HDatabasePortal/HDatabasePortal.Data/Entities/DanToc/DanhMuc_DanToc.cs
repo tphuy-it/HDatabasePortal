@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HDatabasePortal.Data.Entities.ThongTinCongDan;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace HDatabasePortal.Data.Entities.DanToc
         public string Ten { get; set; }
         public string TenKhac { get; set; }
         public string MoTa { get; set; }
+        public List<CongDan> DS_CongDan { get; set; }
     }
 }

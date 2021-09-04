@@ -29,10 +29,11 @@ namespace HDatabasePortal.Data.ConfigEntities.ThongTinCongDan
             builder.Property(p => p.NgayThangNamSinh);
             builder.Property(p => p.NamSinh);
             builder.Property(p => p.GioiTinh_Ma);
+            builder.Property(p => p.DanToc_Ma)
+                .HasMaxLength(2);
+            builder.Property(p => p.ChuHo);
             builder.Property(p => p.AspNetUser_ID)
                 .HasMaxLength(50);
-            builder.Property(p => p.NgheNghiepCap5_Ma)
-                .HasMaxLength(6);
             builder.HasOne<AspNetUser>(p => p.TaiKhoan)
                 .WithOne(p => p.CongDan)
                 .HasForeignKey<CongDan>(p => p.AspNetUser_ID);

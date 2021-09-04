@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HDatabasePortal.Data.Entities.ThongTinCongDan;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,6 @@ namespace HDatabasePortal.Data.Entities.DiaPhuong
         public string QuanHuyen_MaHanhChinh { get; set; }
         public DanhMuc_CapXaPhuong CapXaPhuong { get; set; }
         public DanhMuc_QuanHuyen QuanHuyen { get; set; }
+        public List<DiaChi_CongDan> DS_DiaChi_CongDan { get; set; }
     }
 }
